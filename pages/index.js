@@ -6,7 +6,7 @@ import {useState} from "react";
 
 export default function Home() {
     const [url,setUrl] = useState('')
-  async function GetRequest(e){
+  async function postRequest(e){
       e.preventDefault()
       await axios.post('/api/scrapper', {
         url
@@ -14,13 +14,16 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div style={{textAlign:'center'}}>
+        <h1> Авито парсер </h1>
         <form>
-            <input value={url} onChange={(e) => {
+            <input className={styles.input}
+                   placeholder={'Вставьте ссылку'} value={url} onChange={(e) => {
                 setUrl(e.target.value)
             }}/>
      <button type="submit"
-             onClick={GetRequest || 'undefined'}>
+             className={styles.button}
+             onClick={postRequest || 'undefined'}>
        Request
      </button>
         </form>
