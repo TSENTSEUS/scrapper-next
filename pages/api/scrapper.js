@@ -23,7 +23,7 @@ export default function handler(req,res) {
                 console.log('Расположение: ',location)
             })
         }).catch(err => console.log(err));
-    console.log(result)
+    res.send(result)
 }
 
 console.log('http request end...')

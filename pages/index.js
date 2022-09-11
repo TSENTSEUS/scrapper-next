@@ -5,11 +5,12 @@ import axios from "axios";
 
 export default function Home() {
   async function GetRequest(){
-    await  axios.get('/api/scrapper').then(res => console.log(res)).catch((e) => console.log(e))
+    await axios.get('/api/scrapper').then(res => console.log(res))
+        .catch((e) => console.log(e))
   }
   return (
     <div>
-     <button onClick={GetRequest}>
+     <button onClick={GetRequest || 'undefined'}>
        Request
      </button>
     </div>
