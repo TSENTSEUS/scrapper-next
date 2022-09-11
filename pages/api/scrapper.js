@@ -5,8 +5,8 @@ const axios = require('axios')
  * @param {import('next').NextApiResponse} res
  */
 
-export default function handler(req,res) {
-        const response = axios.get('https://www.avito.ru/sverdlova/kvartiry/1-k._kvartira_406m_69et._2545899306')
+export default async function handler(req,res) {
+        const response = await axios.get('https://www.avito.ru/sankt-peterburg_kolpino/kvartiry/3-k._kvartira_70m_410et._270479821')
             .then(res => {
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
@@ -26,6 +26,7 @@ export default function handler(req,res) {
                     const location = $(e).text()
                     console.log('Расположение: ', location)
                 })
-            }).then(data => console.log(data)).catch((e) => console.log('error'))
+            }).then(data => data).catch((e) => console.log('error'))
+        res.json(response)
 }
 
