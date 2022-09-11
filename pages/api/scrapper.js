@@ -6,8 +6,7 @@ const axios = require('axios')
  */
 
 export default function handler(req,res) {
-    try {
-        const result = axios.get('https://www.avito.ru/sverdlova/kvartiry/1-k._kvartira_406m_69et._2545899306')
+       const result = axios.get('https://www.avito.ru/sverdlova/kvartiry/1-k._kvartira_406m_69et._2545899306')
             .then(res => {
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
@@ -29,9 +28,6 @@ export default function handler(req,res) {
                 })
             }).catch(err => console.log(err));
         res.json(result)
-    }catch (e){
-        console.log(e)
-    }
 }
 
 console.log('http request end...')

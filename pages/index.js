@@ -6,10 +6,8 @@ import axios from "axios";
 export default function Home() {
   async function GetRequest(){
     const response = await axios.get('/api/scrapper')
-        .then(res =>
-        console.log(res))
-        .catch((e) => console.log(e))
-    await alert(JSON.stringify(response))
+    console.log(response.data)
+
   }
   return (
     <div>
