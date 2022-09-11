@@ -28,7 +28,7 @@ export default function Home() {
        Request
      </button>
         </form>
-        { data.each(el => <p> {el} </p>)}
+        { data.map((el, i) => <p key={i}> {el} </p>)}
     </div>
   )
 }
