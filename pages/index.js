@@ -11,7 +11,7 @@ export default function Home() {
         e.preventDefault()
         const response = await axios.post('/api/scrapper', {url})
         setData(response.data)
-        console.log('Data List: ', data)
+        console.log('Data List: ', response.data)
 
     }
 
