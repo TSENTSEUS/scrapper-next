@@ -7,7 +7,7 @@ const axios = require('axios')
 
 export default function handler(req,res) {
     try {
-        const result = axios.get(req.body)
+        const result = axios.get(req.body.url)
             .then(res => {
                 const obj = []
                 const $ = cheerio.load(res.data);
