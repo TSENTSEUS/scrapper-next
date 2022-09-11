@@ -11,7 +11,9 @@ export default function Home() {
         e.preventDefault()
         const response = await axios.post('/api/scrapper', {url})
         setData(response.data)
-  }
+        console.log('Data List: ', data)
+
+    }
 
 
   return (
@@ -28,9 +30,8 @@ export default function Home() {
        Request
      </button>
         </form>
-        { data !== undefined ?
-            data.map((el, i) => <p key={i}> {el} </p>)
-            : 'beb'
+        {
+            data
         }
     </div>
   )
