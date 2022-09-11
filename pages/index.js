@@ -28,7 +28,10 @@ export default function Home() {
        Request
      </button>
         </form>
-        { data.map((el, i) => <p key={i}> {el} </p>)}
+        { data !== undefined ?
+            data.map((el, i) => <p key={i}> {el} </p>)
+            : 'beb'
+        }
     </div>
   )
 }
