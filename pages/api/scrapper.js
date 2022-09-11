@@ -7,7 +7,7 @@ const axios = require('axios')
 
 export default function handler(req,res) {
     try {
-        const result = axios.get('https://www.avito.ru/sverdlova/kvartiry/1-k._kvartira_406m_69et._2545899306')
+        const result = axios.get(req.body)
             .then(res => {
                 const obj = []
                 const $ = cheerio.load(res.data);
