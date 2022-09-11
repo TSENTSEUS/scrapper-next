@@ -5,15 +5,27 @@ import axios from "axios";
 import {useState} from "react";
 
 export default function Home() {
-  async function GetRequest(){
+    const [url,setUrl] = useState('')
+  async function GetRequest(e){
+      e.preventDefault()
+      await axios.post('/api/scrapper', {
+        url
+    })
     await axios.get('/api/scrapper')
 
   }
+
   return (
     <div>
-     <button onClick={GetRequest || 'undefined'}>
+        <form>
+            <input value={url} onChange={(e) => {
+                setUrl(e.target.value)
+            }}/>
+     <button type="submit"
+             onClick={GetRequest || 'undefined'}>
        Request
      </button>
+        </form>
     </div>
   )
 }
