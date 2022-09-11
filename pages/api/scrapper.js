@@ -6,7 +6,7 @@ const axios = require('axios')
  */
 
 export default async function handler(req,res) {
-        const response = await axios.get('https://www.avito.ru/sankt-peterburg_kolpino/kvartiry/3-k._kvartira_70m_410et._270479821')
+        const response = await axios.get(req.body)
             .then(res => {
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
