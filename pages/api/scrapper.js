@@ -27,6 +27,6 @@ export default async function handler(req,res) {
                     console.log('Расположение: ', location)
                 })
             }).catch((e) => console.log('error'))
-        res.json(response)
+        res.json({'data':response})
 }
 
