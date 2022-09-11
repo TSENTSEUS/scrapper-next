@@ -33,9 +33,8 @@ export default async function handler(req,res) {
                 $('.style-item-address__string-wt61A').each((i, e) => {
                      location += $(e).text()
                 })
-                console.log(data)
                 return data
-            }).catch((e) => console.log('error'))
+            }).then(datsa => datsa).catch((e) => console.log('error'))
         res.json(response)
 }
 
