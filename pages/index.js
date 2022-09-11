@@ -10,9 +10,7 @@ export default function Home() {
       e.preventDefault()
       await axios.post('/api/scrapper', {
         url
-    })
-    await axios.get('/api/scrapper')
-
+    }).then(response => console.log('res',response))
   }
 
   return (

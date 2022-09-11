@@ -6,7 +6,7 @@ const axios = require('axios')
  */
 
 export default async function handler(req,res) {
-        const response = await axios.get(req.body)
+        const response = await axios.get(req.body.url)
             .then(res => {
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
@@ -27,6 +27,7 @@ export default async function handler(req,res) {
                     console.log('Расположение: ', location)
                 })
             }).then(data => data).catch((e) => console.log('error'))
+        console.log('url',req.body.url)
         res.json(response)
 }
 
