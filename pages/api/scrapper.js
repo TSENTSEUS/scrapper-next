@@ -5,35 +5,36 @@ const axios = require('axios')
  * @param {import('next').NextApiResponse} res
  */
 
-export default async function handler(req,res) {
-
-    const response = await axios.get(req.body.url)
+export default function handler(req,res) {
+    try {
+        const result = axios.get('https://www.avito.ru/sverdlova/kvartiry/1-k._kvartira_406m_69et._2545899306')
             .then(res => {
+                const obj = {}
                 const $ = cheerio.load(res.data);
-                const title = $('.title-info-title-text').each((i, e) => {
-                   const tit = $(e).text();
-                   return tit
+                $('.title-info-title-text').each((i, e) => {
+                    const test = $(e).text();
+                    test.push(obj)
                 })
-                const li = $('li[class=params-paramsList__item-appQw]').each((i, e) => {
+                $('li[class=params-paramsList__item-appQw]').each((i, e) => {
                     const style = $(e).find('style').remove()
-                    const list =  $(e).text()
-                    return list
+                    const text = $(e).text()
+                    text.push(obj)
                 })
-                const price = $('.style-price-value-main-TIg6u').each((i, e) => {
-                     const pr = $(e).find('span').attr('content')
-                    return pr
+                $('.style-price-value-main-TIg6u').each((i, e) => {
+                    const price = $(e).find('span').attr('content')
+                    price.push(obj)
                 })
-                const location = $('.style-item-address__string-wt61A').each((i, e) => {
-                     const loc = $(e).text()
-                    return loc
+                $('.style-item-address__string-wt61A').each((i, e) => {
+                    const location = $(e).text()
+                    location.push(obj)
                 })
-                return {
-                    title,
-                    li,
-                    price,
-                    location
-                }
-            }).then(data => console.log(data)).catch((e) => console.log('error'))
-        res.json(response)
+                return console.log(obj)
+            }).catch(err => console.log(err));
+        console.log('result:', result)
+        res.json(result)
+    }catch (e){
+        console.log(e)
+    }
 }
 
+console.log('http request end...')
