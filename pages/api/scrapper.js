@@ -6,7 +6,7 @@ const axios = require('axios')
  */
 
 export default function handler(req,res) {
-       const result = axios.get('https://www.avito.ru/sverdlova/kvartiry/1-k._kvartira_406m_69et._2545899306')
+        const response = axios.get('https://www.avito.ru/sverdlova/kvartiry/1-k._kvartira_406m_69et._2545899306')
             .then(res => {
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
@@ -26,8 +26,6 @@ export default function handler(req,res) {
                     const location = $(e).text()
                     console.log('Расположение: ', location)
                 })
-            }).catch(err => console.log(err));
-        res.json(result)
+            }).then(data => console.log(data)).catch((e) => console.log('error'))
 }
 
-console.log('http request end...')
