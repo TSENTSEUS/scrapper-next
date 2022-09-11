@@ -7,6 +7,13 @@ import {useEffect, useState} from "react";
 export default function Home() {
     const [url,setUrl] = useState('')
     const [data, setData] = useState('')
+    function forLoop(){
+        if (data.length !== 0){
+          data.forEach(function(e,i){
+              return <p key={i}> {e} </p>
+          })
+        }
+    }
     async function postRequest(e){
         e.preventDefault()
         const response = await axios.post('/api/scrapper', {url})
@@ -31,7 +38,10 @@ export default function Home() {
      </button>
         </form>
         {
-            data
+           (data.length !== 0)}{
+            data.forEach(function(e,i){
+            return <p key={i}> {e} </p>
+        })
         }
     </div>
   )
