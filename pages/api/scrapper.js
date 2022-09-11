@@ -26,7 +26,7 @@ export default async function handler(req,res) {
                     const location = $(e).text()
                     console.log('Расположение: ', location)
                 })
-            }).then(data => data).catch((e) => console.log('error'))
+            }).catch((e) => console.log('error'))
         console.log('url',req.body.url)
         res.json(response)
 }
