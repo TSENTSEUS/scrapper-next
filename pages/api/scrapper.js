@@ -28,6 +28,7 @@ export default function handler(req,res) {
                     const location = $(e).text()
                     obj.push(location)
                 })
+                console.log(obj)
                 return obj
             }).catch(err => console.log(err));
         res.json(result)
