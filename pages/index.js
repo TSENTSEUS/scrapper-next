@@ -9,7 +9,7 @@ export default function Home() {
     const [data, setData] = useState(null)
     function postRequest(e){
       e.preventDefault()
-      axios.post('/api/scrapper', {url}).then(res => console.log('res', setData(res.data.data)))
+      axios.post('/api/scrapper', {url}).then(res => console.log('res', setData(res.data.data),'type',res.data.typeOf))
 
   }
 
