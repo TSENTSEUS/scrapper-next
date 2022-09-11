@@ -9,7 +9,7 @@ export default function handler(req,res) {
     try {
         const result = axios.get('https://www.avito.ru/sverdlova/kvartiry/1-k._kvartira_406m_69et._2545899306')
             .then(res => {
-                const obj = {}
+                const obj = []
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
                     const test = $(e).text();
