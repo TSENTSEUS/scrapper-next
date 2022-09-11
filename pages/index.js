@@ -7,12 +7,10 @@ import {useEffect, useState} from "react";
 export default function Home() {
     const [url,setUrl] = useState('')
     const [data, setData] = useState('')
-  async function postRequest(e){
+    function postRequest(e){
       e.preventDefault()
-      const response = await axios.post('/api/scrapper', {
-        url
-    })
-      console.log('data:', response.data)
+      axios.post('/api/scrapper', {url}).then(res => console.log('res', setData(res.data)))
+
   }
 
 
