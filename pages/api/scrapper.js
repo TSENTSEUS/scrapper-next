@@ -6,26 +6,35 @@ const axios = require('axios')
  */
 
 export default async function handler(req,res) {
-        const response = await axios.get(req.body.url)
+
+    const response = await axios.get(req.body.url)
             .then(res => {
+                let text;
+                let li;
+                let price;
+                let location;
+                const data = {
+                    text,
+                    li,
+                    price,
+                    location
+                }
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
-                    const test = $(e).text();
-                    console.log('Title: ', test);
+                     text += $(e).text();
                 })
                 $('li[class=params-paramsList__item-appQw]').each((i, e) => {
                     const style = $(e).find('style').remove()
-                    const text = $(e).text()
-                    console.log(text)
+                     li += $(e).text()
                 })
                 $('.style-price-value-main-TIg6u').each((i, e) => {
-                    const price = $(e).find('span').attr('content')
-                    console.log(price)
+                     price += $(e).find('span').attr('content')
                 })
                 $('.style-item-address__string-wt61A').each((i, e) => {
-                    const location = $(e).text()
-                    console.log('Расположение: ', location)
+                     location += $(e).text()
                 })
+                console.log(data)
+                return data
             }).catch((e) => console.log('error'))
         res.json(response)
 }

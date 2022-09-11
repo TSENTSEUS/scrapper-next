@@ -8,8 +8,8 @@ export default function Home() {
     const [url,setUrl] = useState('')
     const [data, setData] = useState(null)
     async function postRequest(e){
-      e.preventDefault()
-      const response = await axios.post('/api/scrapper', {url})
+        e.preventDefault()
+        const response = await axios.post('/api/scrapper', {url})
         await console.log(response)
   }
 
