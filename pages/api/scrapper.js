@@ -11,17 +11,21 @@ export default async function handler(req,res) {
             .then(res => {
                 const $ = cheerio.load(res.data);
                 const title = $('.title-info-title-text').each((i, e) => {
-                   return $(e).text();
+                   const tit = $(e).text();
+                   return tit
                 })
                 const li = $('li[class=params-paramsList__item-appQw]').each((i, e) => {
                     const style = $(e).find('style').remove()
-                    return $(e).text()
+                    const list =  $(e).text()
+                    return list
                 })
                 const price = $('.style-price-value-main-TIg6u').each((i, e) => {
-                     return $(e).find('span').attr('content')
+                     const pr = $(e).find('span').attr('content')
+                    return pr
                 })
                 const location = $('.style-item-address__string-wt61A').each((i, e) => {
-                     return $(e).text()
+                     const loc = $(e).text()
+                    return loc
                 })
                 return {
                     title,
