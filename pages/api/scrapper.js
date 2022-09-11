@@ -5,9 +5,9 @@ const axios = require('axios')
  * @param {import('next').NextApiResponse} res
  */
 
-export default function handler(req,res) {
+export default async function handler(req,res) {
     try {
-        const result = axios.get(req.body.url)
+        const result = await axios.get(req.body.url)
             .then(res => {
                 const obj = []
                 const $ = cheerio.load(res.data);
@@ -37,4 +37,3 @@ export default function handler(req,res) {
     }
 }
 
-console.log('http request end...')

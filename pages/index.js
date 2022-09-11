@@ -10,7 +10,7 @@ export default function Home() {
     async function postRequest(e){
         e.preventDefault()
         const response = await axios.post('/api/scrapper', {url})
-        console.log(response)
+        setData(response)
   }
 
 
