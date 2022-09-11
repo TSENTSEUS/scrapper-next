@@ -1,28 +1,16 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import axios from "axios";
 import {useEffect, useState} from "react";
 
 export default function Home() {
     const [url,setUrl] = useState('')
-    const [data, setData] = useState('')
-    function forLoop(){
-        if (data.length !== 0){
-          data.forEach(function(e,i){
-              return <p key={i}> {e} </p>
-          })
-        }
-    }
+    const [data, setData] = useState([])
     async function postRequest(e){
         e.preventDefault()
         const response = await axios.post('/api/scrapper', {url})
         setData(response.data)
         console.log('Data List: ', response.data)
-
     }
-
-
   return (
     <div style={{textAlign:'center'}}>
         <h1> Авито парсер </h1>
@@ -37,12 +25,9 @@ export default function Home() {
        Request
      </button>
         </form>
-        {
-           (data.length !== 0)}{
-            data.forEach(function(e,i){
-            return <p key={i}> {e} </p>
-        })
-        }
+        { data.length !== 0 ? data.map((el,i) => {
+            return <p key={i}> {el} </p>
+        }) : ''}
     </div>
   )
 }
