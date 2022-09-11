@@ -9,32 +9,27 @@ export default async function handler(req,res) {
 
     const response = await axios.get(req.body.url)
             .then(res => {
-                let text;
-                let li;
-                let price;
-                let location;
-                const data = {
-                    text,
+                const $ = cheerio.load(res.data);
+                const title = $('.title-info-title-text').each((i, e) => {
+                   return $(e).text();
+                })
+                const li = $('li[class=params-paramsList__item-appQw]').each((i, e) => {
+                    const style = $(e).find('style').remove()
+                    return $(e).text()
+                })
+                const price = $('.style-price-value-main-TIg6u').each((i, e) => {
+                     return $(e).find('span').attr('content')
+                })
+                const location = $('.style-item-address__string-wt61A').each((i, e) => {
+                     return $(e).text()
+                })
+                return {
+                    title,
                     li,
                     price,
                     location
                 }
-                const $ = cheerio.load(res.data);
-                $('.title-info-title-text').each((i, e) => {
-                     text += $(e).text();
-                })
-                $('li[class=params-paramsList__item-appQw]').each((i, e) => {
-                    const style = $(e).find('style').remove()
-                     li += $(e).text()
-                })
-                $('.style-price-value-main-TIg6u').each((i, e) => {
-                     price += $(e).find('span').attr('content')
-                })
-                $('.style-item-address__string-wt61A').each((i, e) => {
-                     location += $(e).text()
-                })
-                return data
-            }).then(datsa => datsa).catch((e) => console.log('error'))
+            }).then(data => console.log(data)).catch((e) => console.log('error'))
         res.json(response)
 }
 
