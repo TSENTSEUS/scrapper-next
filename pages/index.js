@@ -22,7 +22,7 @@ export default function Home() {
      <button type="submit"
              className={styles.button}
              onClick={postRequest || 'undefined'}>
-       Request
+       Запрос
      </button>
         </form>
         { data.length !== 0 ? data.map((el,i) => {

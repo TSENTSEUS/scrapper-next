@@ -21,7 +21,7 @@ export default async function handler(req,res) {
                     obj.push(text)
                 })
                 $('.style-price-value-main-TIg6u').each((i, e) => {
-                    const price = $(e).find('span').attr('content')
+                    const price = $(e).text()
                     obj.push(price)
                 })
                 $('.style-item-address__string-wt61A').each((i, e) => {
