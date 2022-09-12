@@ -5,6 +5,9 @@
     width: 300px;
     margin-right: 3px;
 }
+.gallery{
+    width: 500px;
+}
 .button{
     border-radius: 2px;
     background: teal;
@@ -14,5 +17,6 @@
 .description{
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    text-decoration: none;
+    text-align: left;
+    list-style: none;
 }
