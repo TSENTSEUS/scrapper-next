@@ -27,6 +27,7 @@ export default function Home() {
        Запрос
      </button>
         </form>
+        <Image src={'https://53.img.avito.st/image/1/1.vHXqt7ayEJzEFsCfnv3yITIUEJpKFhI.xnor6lGAuuegDq7ifLO4l97qGszTWZYUxKsh53IgOnc'} width={'500px'} height={'400px'}/>
         { data.length !== 0 ? data.map((el,i) => {
             return <>
                 <h3 key={i}> {el.title}</h3>
