@@ -16,9 +16,10 @@ export default function Home() {
         setEdit(!edit)
     }
     useEffect(()=>{
-        const price = data[0].price
+        const price = data[0]?.price
         setInitialPrice(price)
     },[data])
+
     async function postRequest(e){
         e.preventDefault()
         const response = await axios.post('/api/scrapper', {url})
