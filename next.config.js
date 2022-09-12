@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images:{
-    domains: ['https://53.img.avito.st/']
+    domains: ['53.img.avito.st'],
+    formats: ['image/avif', 'image/webp']
   }
 }
 
