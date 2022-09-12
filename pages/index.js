@@ -9,7 +9,7 @@ export default function Home() {
 
     const [edit,setEdit] = useState(false)
 
-    const [initialPrice, setInitialPrice] = useState('23')
+    const [initialPrice, setInitialPrice] = useState('')
 
     function editData(e){
         e.preventDefault()
@@ -50,15 +50,17 @@ export default function Home() {
                 {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
                 {type.description.map((e,i) => <p key={i}>{e}</p>)}
             </>
-        }) :
+        }) : ''
+        }
+        {
             <div>
-                { edit ? <input value={initialPrice} onChange={(e) =>
-                    setInitialPrice(e.target.value)}/> : initialPrice }
+                { edit ?
+                    <input value={initialPrice} onChange={(e) =>
+                    setInitialPrice(e.target.value)}/> : initialPrice}
                 {
-                   <button onClick={editData}> Изменить цену </button>
+                    <button onClick={editData}> Изменить цену </button>
                 }
             </div>
-
         }
     </div>
   )
