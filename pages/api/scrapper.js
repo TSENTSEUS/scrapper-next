@@ -12,7 +12,6 @@ export default async function handler(req,res) {
                 const about = []
                 const obj = {}
                 const list = []
-                list.push(obj['description'] = about)
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
                     const test = $(e).text();
@@ -31,6 +30,7 @@ export default async function handler(req,res) {
                     const location = $(e).text()
                     list.push(obj['location'] = location)
                 })
+                list.push(obj['description'] = about)
                 console.log(list)
                 return list
             }).catch(err => console.log(err));

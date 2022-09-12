@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 export default function Home() {
     const [url,setUrl] = useState('')
     const [data, setData] = useState([])
+
     async function postRequest(e){
         e.preventDefault()
         const response = await axios.post('/api/scrapper', {url})
@@ -26,7 +27,10 @@ export default function Home() {
      </button>
         </form>
         { data.length !== 0 ? data.map((el,i) => {
-            return <p key={i}> {el} </p>
+            return <>
+                <h3 key={i}> {el.title} </h3>
+                {el.description.forEach(e => <p>{e}</p>)}
+            </>
         }) : ''}
     </div>
   )
