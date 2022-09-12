@@ -27,6 +27,7 @@ export default function Home() {
         data.map((e) => {
             setInitialPrice(e.price)
         })
+        console.log(initialPrice)
     })
 
 
