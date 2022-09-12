@@ -53,15 +53,15 @@ export default function Home() {
             }
                 <button onClick={editData}> Изменить цену </button>
 
-                О квартире:
                 <ul className={styles.description}>
-                {type.description.map((e,i) => <li key={i}>{e}</li>)}
+                    О квартире:
+                    {type.description.map((e,i) => <li key={i}>{e}</li>)}
                 </ul>
 
                 <div className={styles.gallery}>
                     {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
                 </div>
-                <div> {type.location} </div>
+                <div> <h4>Расположение:</h4> {type.location} </div>
             </>
         }) : ''}
 

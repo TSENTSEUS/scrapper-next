@@ -7,6 +7,7 @@
 }
 .gallery{
     width: 500px;
+    margin: 0 auto;
 }
 .button{
     border-radius: 2px;
