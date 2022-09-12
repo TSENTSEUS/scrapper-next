@@ -9,9 +9,8 @@ export default function Home() {
 
     const [edit,setEdit] = useState(false)
 
-    const [initialPrice, setInitialPrice] = useState('')
+    const [initialPrice, setInitialPrice] = useState('23')
 
-    const statement = initialPrice !== ''
     function editData(e){
         e.preventDefault()
         setEdit(!edit)
@@ -23,12 +22,7 @@ export default function Home() {
         setData(response.data)
         console.log('Data List: ', response.data)
     }
-    useEffect(() => {
-        data.map((e) => {
-            setInitialPrice(e.price)
-        })
-        console.log(initialPrice)
-    },[data, initialPrice, statement])
+
 
 
   return (
@@ -45,12 +39,12 @@ export default function Home() {
        Запрос
      </button>
         </form>
-        { data.length !== 0 ? data.map((el,i) => {
+        { data.length !== 0 ? data.map((type,i) => {
             return <>
-                <h3 key={i}> {el.title}</h3>
-                Стоимость <p>{el.price}</p>
-                {el.images.map((e,i) => <img src={e} alt={''} key={i} />)}
-                {el.description.map((e,i) => <p key={i}>{e}</p>)}
+                <h3 key={i}> {type.title}</h3>
+                Стоимость {setInitialPrice(type.price)}<p>{type.price}</p>
+                {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
+                {type.description.map((e,i) => <p key={i}>{e}</p>)}
             </>
         }) :
             <div>
