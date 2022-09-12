@@ -12,6 +12,7 @@ export default async function handler(req,res) {
                 const about = []
                 const obj = {}
                 const list = []
+                list.push(obj['description'] = about)
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
                     const test = $(e).text();
@@ -21,7 +22,6 @@ export default async function handler(req,res) {
                     const style = $(e).find('style').remove()
                     const text = $(e).text()
                     about.push(text)
-                    list.push(obj['description'] = about)
                 })
                 $('.style-price-value-main-TIg6u').each((i, e) => {
                     const price = $(e).text()
