@@ -10,7 +10,6 @@ export default function Home() {
     const [initialPrice, setInitialPrice] = useState('')
     const [flatLocation, setFlatLocation] = useState('')
 
-    const [data2,setData2] = useState('Bebrikiva 32')
 
 
 
@@ -47,7 +46,7 @@ export default function Home() {
         { data.length !== 0 ? data.map((type) => {
             return <>
                 <h3 > {type.title}</h3>
-                <CustomInput value={initialPrice}/>
+                <CustomInput value={type.price}/>
                 <div>
                  О квартире:
                 <ul className={styles.description}>
@@ -57,7 +56,7 @@ export default function Home() {
                 <div className={styles.gallery}>
                     {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
                 </div>
-                <div> <h4>Расположение:</h4> <CustomInput value={flatLocation}/> </div>
+                <div> <h4>Расположение:</h4> <CustomInput value={type.location}/> </div>
             </>
         }) : ''}
 
