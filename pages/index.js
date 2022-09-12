@@ -29,7 +29,9 @@ export default function Home() {
         { data.length !== 0 ? data.map((el,i) => {
             return <>
                 <h3 key={i}> {el.title} </h3>
-                {el.description.forEach(e => <p>{e}</p>)}
+                <p>{el.description}</p>
+                <p>{el.price}</p>
+                <p>{el.location}</p>
             </>
         }) : ''}
     </div>
