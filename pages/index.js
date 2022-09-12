@@ -74,10 +74,11 @@ const CustomInput = ({value}) => {
     return (
         <div>
             {edit
-            ? <input value={data1} onChange={(e) => setData1(e.target.value)}/>
+            ? <input value={data1} className={styles.miniInput}
+                     onChange={(e) => setData1(e.target.value)}/>
             : data1}
-            <button onClick={editData}>
-                edit
+            <button className={styles.miniButton} onClick={editData}>
+                Изменить
             </button>
         </div>
     )

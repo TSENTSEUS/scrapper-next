@@ -5,14 +5,27 @@
     width: 300px;
     margin-right: 3px;
 }
+.miniInput{
+    border-radius: 2px;
+    border: 1px solid gray;
+    padding: 4px 8px;
+    margin-right: 3px;
+}
 .gallery{
     width: 500px;
     margin: 0 auto;
 }
 .button{
+     border-radius: 2px;
+     background: teal;
+     padding: 10px;
+     border: 1px solid black;
+}
+.miniButton{
     border-radius: 2px;
     background: teal;
-    padding: 10px;
+    margin: 0 5px;
+    padding: 4px;
     border: 1px solid black;
 }
 .description{
