@@ -61,10 +61,6 @@ export default function Home() {
             </>
         }) : ''}
 
-        <div>
-            <CustomInput value={'bebra'}/>
-            <CustomInput value={'bebra'}/>
-        </div>
     </div>
   )
 }
