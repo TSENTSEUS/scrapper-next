@@ -11,3 +11,8 @@
     padding: 10px;
     border: 1px solid black;
 }
+.description{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    text-decoration: none;
+}

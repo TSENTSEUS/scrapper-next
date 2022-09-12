@@ -55,7 +55,9 @@ export default function Home() {
                 <div>
                 {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
                 </div>
+                <ul className={styles.description}>
                 {type.description.map((e,i) => <p key={i}>{e}</p>)}
+                </ul>
             </>
         }) : ''}
     </div>
