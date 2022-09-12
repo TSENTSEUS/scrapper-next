@@ -28,7 +28,7 @@ export default function Home() {
             setInitialPrice(e.price)
         })
         console.log(initialPrice)
-    })
+    },[data, initialPrice, statement])
 
 
   return (
@@ -57,7 +57,7 @@ export default function Home() {
                 { edit ? <input value={initialPrice} onChange={(e) =>
                     setInitialPrice(e.target.value)}/> : statement ? initialPrice : '' }
                 {
-                    statement ? <button onClick={editData}> Изменить цену </button> : ''
+                   <button onClick={editData}> Изменить цену </button>
                 }
             </div>
 
