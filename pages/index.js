@@ -8,7 +8,9 @@ export default function Home() {
     const [data, setData] = useState([])
 
     const [edit,setEdit] = useState(false)
+
     const [initialPrice, setInitialPrice] = useState('')
+
     const statement = initialPrice !== ''
     function editData(e){
         e.preventDefault()
@@ -21,7 +23,11 @@ export default function Home() {
         setData(response.data)
         console.log('Data List: ', response.data)
     }
-
+    useEffect(() => {
+        data.map((e) => {
+            setInitialPrice(e.price)
+        })
+    })
 
 
   return (
@@ -39,7 +45,6 @@ export default function Home() {
      </button>
         </form>
         { data.length !== 0 ? data.map((el,i) => {
-                setInitialPrice(el.price)
             return <>
                 <h3 key={i}> {el.title}</h3>
                 Стоимость <p>{el.price}</p>
@@ -47,9 +52,9 @@ export default function Home() {
                 {el.description.map((e,i) => <p key={i}>{e}</p>)}
             </>
         }) :
-
             <div>
-                { edit ? <input value={initialPrice} onChange={(e) => setInitialPrice(e.target.value)}/> : statement ? initialPrice : '' }
+                { edit ? <input value={initialPrice} onChange={(e) =>
+                    setInitialPrice(e.target.value)}/> : statement ? initialPrice : '' }
                 {
                     statement ? <button onClick={editData}> Изменить цену </button> : ''
                 }
