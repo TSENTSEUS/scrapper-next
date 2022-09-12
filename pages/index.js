@@ -50,7 +50,7 @@ export default function Home() {
                     edit ?
                     <input value={initialPrice} onChange={(e) =>
                         setInitialPrice(e.target.value)}/> : initialPrice
-            } : <p>{initialPrice}</p>
+            }
                 <button onClick={editData}> Изменить цену </button>
                 {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
                 {type.description.map((e,i) => <p key={i}>{e}</p>)}
