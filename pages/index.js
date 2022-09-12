@@ -43,16 +43,18 @@ export default function Home() {
        Запрос
      </button>
         </form>
-        { data.length !== 0 ? data.map((type,i) => {
+        { data.length !== 0 ? data.map((type) => {
             return <>
-                <h3 key={i}> {type.title}</h3>
+                <h3 > {type.title}</h3>
                 Стоимость {
                     edit ?
                     <input value={initialPrice} onChange={(e) =>
                         setInitialPrice(e.target.value)}/> : initialPrice
             }
                 <button onClick={editData}> Изменить цену </button>
+                <div>
                 {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
+                </div>
                 {type.description.map((e,i) => <p key={i}>{e}</p>)}
             </>
         }) : ''}
