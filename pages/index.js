@@ -8,8 +8,8 @@ export default function Home() {
     const [data, setData] = useState([])
 
     const [edit,setEdit] = useState(false)
-    const [initialPrice, setInitialPrice] = useState()
-    const statement = initialPrice !== undefined
+    const [initialPrice, setInitialPrice] = useState(null)
+    const statement = initialPrice !== null
     function editData(e){
         e.preventDefault()
         setEdit(!edit)
