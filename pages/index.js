@@ -8,9 +8,8 @@ export default function Home() {
     const [data, setData] = useState([])
 
     const [edit,setEdit] = useState(false)
-    const [getPrice, setGetPrice] = useState(null)
-    const [initialPrice, setInitialPrice] = useState(getPrice)
-    const statement = initialPrice !== null
+    const [initialPrice, setInitialPrice] = useState('')
+    const statement = initialPrice !== ''
     function editData(e){
         e.preventDefault()
         setEdit(!edit)
@@ -40,7 +39,7 @@ export default function Home() {
      </button>
         </form>
         { data.length !== 0 ? data.map((el,i) => {
-                setGetPrice(el.price)
+                setInitialPrice(el.price)
             return <>
                 <h3 key={i}> {el.title}</h3>
                 Стоимость <p>{el.price}</p>
