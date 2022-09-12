@@ -9,7 +9,7 @@ export default function Home() {
 
     const [edit,setEdit] = useState(false)
     const [initialPrice, setInitialPrice] = useState()
-
+    const statement = initialPrice !== undefined
     function editData(e){
         e.preventDefault()
         setEdit(!edit)
@@ -49,8 +49,10 @@ export default function Home() {
         }) :
 
             <div>
-                { edit ? <input value={initialPrice} onChange={(e) => setInitialPrice(e.target.value)}/> : editedPrice }
-                <button onClick={editData }> Изменить цену </button>
+                { edit ? <input value={initialPrice} onChange={(e) => setInitialPrice(e.target.value)}/> : statement ? initialPrice : '' }
+                {
+                    statement ? <button onClick={editData}> Изменить цену </button> : ''
+                }
             </div>
 
         }
