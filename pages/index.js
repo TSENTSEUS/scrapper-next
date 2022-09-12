@@ -30,8 +30,8 @@ export default function Home() {
         { data.length !== 0 ? data.map((el,i) => {
             return <>
                 <h3 key={i}> {el.title}</h3>
-                {el.images.map((e,i) => <Image src={e} alt={''} key={i} width={'200px'} height={'200px'}/>)}
-                {`Стоимость ${el.price}`}
+                {el.images.map((e,i) => <img src={e} alt={''} key={i} width={'200px'} height={'200px'}/>)}
+                {`Стоимость <p>${el.price}</p>`}
                 {el.description.map((e,i) => <p key={i}>{e}</p>)}
             </>
         }) : ''}
