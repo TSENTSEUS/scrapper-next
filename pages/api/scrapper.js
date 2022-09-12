@@ -9,14 +9,21 @@ export default async function handler(req,res) {
     try {
         const result = await axios.get(req.body.url)
             .then(res => {
+                const img = []
                 const about = []
                 const obj = {}
                 const list = []
                 list.push(obj['description'] = about)
+                list.push(obj['images'] = img)
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
                     const test = $(e).text();
                     list.push(obj['title'] = test)
+                })
+                $('.images-preview-previewImageWrapper-RfThd').each((i,e )=>{
+                    const src = $(e).attr('src')
+                    img.push(src)
+                    console.log(src)
                 })
                 $('li[class=params-paramsList__item-appQw]').each((i, e) => {
                     const style = $(e).find('style').remove()

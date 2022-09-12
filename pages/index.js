@@ -1,6 +1,7 @@
 import styles from '../styles/Home.module.css'
 import axios from "axios";
 import {useEffect, useState} from "react";
+import Image from "next/image";
 
 export default function Home() {
     const [url,setUrl] = useState('')
@@ -29,6 +30,7 @@ export default function Home() {
         { data.length !== 0 ? data.map((el,i) => {
             return <>
                 <h3 key={i}> {el}</h3>
+                <Image src={el.images} alt={''}/>
             </>
         }) : ''}
     </div>
