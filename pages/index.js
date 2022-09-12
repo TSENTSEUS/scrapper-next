@@ -52,11 +52,12 @@ export default function Home() {
                         setInitialPrice(e.target.value)}/> : initialPrice
             }
                 <button onClick={editData}> Изменить цену </button>
+                <div>
                 О квартире:
                 <ul className={styles.description}>
                     {type.description.map((e,i) => <li key={i}>{e}</li>)}
                 </ul>
-
+                </div>
                 <div className={styles.gallery}>
                     {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
                 </div>
