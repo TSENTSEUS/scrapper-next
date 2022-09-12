@@ -46,7 +46,7 @@ export default function Home() {
         { data.length !== 0 ? data.map((type,i) => {
             return <>
                 <h3 key={i}> {type.title}</h3>
-                Стоимость {setInitialPrice(type.price)}<p>{type.price}</p>
+                Стоимость <p>{type.price}</p>
                 {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
                 {type.description.map((e,i) => <p key={i}>{e}</p>)}
             </>
