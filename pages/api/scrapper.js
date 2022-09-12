@@ -20,7 +20,7 @@ export default async function handler(req,res) {
                     const test = $(e).text();
                     list.push(obj['title'] = test)
                 })
-                $('.images-preview-previewImageWrapper-RfThd').each((i,e )=>{
+                $('.images-preview-previewImageWrapper-RfThd img').each((i,e )=>{
                     const src = $(e).attr('src')
                     img.push(src)
                     console.log(src)
