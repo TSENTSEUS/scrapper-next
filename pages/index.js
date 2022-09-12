@@ -29,7 +29,7 @@ export default function Home() {
         </form>
         { data.length !== 0 ? data.map((el,i) => {
             return <>
-                <h3 key={i}> {el}</h3>
+                <h3 key={i}> {el.title}</h3>
                 <Image src={el.images} alt={''}/>
             </>
         }) : ''}
