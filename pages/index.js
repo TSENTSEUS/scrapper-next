@@ -55,7 +55,7 @@ export default function Home() {
         }) :
             <div>
                 { edit ? <input value={initialPrice} onChange={(e) =>
-                    setInitialPrice(e.target.value)}/> : statement ? initialPrice : '' }
+                    setInitialPrice(e.target.value)}/> : initialPrice }
                 {
                    <button onClick={editData}> Изменить цену </button>
                 }
