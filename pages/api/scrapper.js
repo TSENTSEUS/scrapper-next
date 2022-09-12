@@ -12,7 +12,7 @@ export default async function handler(req,res) {
                 const img = []
                 const about = []
                 const obj = {}
-                const list = []
+                const list = [obj]
                 list.push(obj['description'] = about)
                 list.push(obj['images'] = img)
                 const $ = cheerio.load(res.data);
