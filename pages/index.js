@@ -30,7 +30,7 @@ export default function Home() {
         { data.length !== 0 ? data.map((el,i) => {
             return <>
                 <h3 key={i}> {el.title}</h3>
-                {el.images.forEach((e) => <Image src={e} alt={''}/>)}
+                <Image src={el.images[0]} alt={''}/>
                 {el.description.forEach((e) => <p>{e}</p>)}
             </>
         }) : ''}
