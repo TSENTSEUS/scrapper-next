@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css'
 import axios from "axios";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import { jsPDF } from "jspdf";
 
 export default function Home() {
