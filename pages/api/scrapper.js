@@ -7,12 +7,7 @@ const axios = require('axios')
 
 export default async function handler(req,res) {
     try {
-        const result = await axios.get(req.body.url,{
-           headers:{
-               "Access-Control-Allow-Credentials": "true",
-               "Access-Control-Allow-Origin": "https://scrapper-next.herokuapp.com" ,
-           }
-        })
+        const result = await axios.get(req.body.url)
             .then(res => {
                 const img = []
                 const about = []
@@ -22,8 +17,8 @@ export default async function handler(req,res) {
                 obj['images'] = img
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
-                    const test = $(e).text();
-                    obj['title'] = test
+                    const title = $(e).text();
+                    obj['title'] = title
                 })
                 $('.images-preview-previewImageWrapper-RfThd img').each((i,e )=>{
                     const src = $(e).attr('src')
