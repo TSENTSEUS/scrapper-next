@@ -24,6 +24,10 @@ export default async function handler(req,res) {
                     const title = $(e).text();
                     obj['title'] = title
                 })
+                $('.body > script:nth-child(5)').each((i,e) => {
+                    const initialData = $(e).text()
+                    obj['initialData'] = initialData
+                })
                 $('.image-frame-wrapper-_NvbY img').each((i,e )=>{
                     const src = $(e).attr('src')
                     img.push(src)
