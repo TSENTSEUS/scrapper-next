@@ -3,7 +3,9 @@ import axios from "axios";
 import {useRef, useState} from "react";
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
+import CustomInput from "../components/CustomInput";
 export default function Home() {
+
     const [url,setUrl] = useState('')
     const [data, setData] = useState([])
     const [hiddenElement,setHiddenElement] = useState(true)
@@ -31,8 +33,6 @@ export default function Home() {
         setData(response.data)
         console.log('Data List: ', response.data)
     }
-
-
 
   return (
     <div style={{textAlign:'center'}}>
@@ -76,7 +76,7 @@ export default function Home() {
 
                 <div className={styles.contact}>
                     {
-                        hiddenElement ? "" : "Ваш специалист по недвижимости Артем +7 111 9321 72 74"
+                        hiddenElement ? "" : "Ваш специалист по недвижимости Петров Артем +7 911 975 75 24"
                     }
                 </div>
             </div>
@@ -84,29 +84,6 @@ export default function Home() {
         }) : ''}
     </div>
 
-
   )
 }
 
-const CustomInput = ({value, hidden}) => {
-    function editData(e){
-        e.preventDefault()
-        setEdit(!edit)
-    }
-    const [edit,setEdit] = useState(false)
-    const [data1, setData1] = useState(String(value))
-    return (
-        <div>
-            {edit
-            ? <input value={data1} className={styles.miniInput}
-                     onChange={(e) => setData1(e.target.value)}/>
-            : data1}
-            {
-                hidden ? <button className={styles.miniButton} onClick={editData}>
-                Изменить
-                </button> : <div></div>
-            }
-        </div>
-
-    )
-}
