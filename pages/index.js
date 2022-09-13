@@ -12,8 +12,9 @@ export default function Home() {
         let element = document.getElementById('mainDiv')
         setEl(element)
     },[data])
+
     const generatePdf = () =>{
-        const doc = new jsPDF("p","pt","a4");
+        const doc = new jsPDF();
         doc.html(el, {
             callback: function (pdf){
                 pdf.save('card.pdf')
