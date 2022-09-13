@@ -21,6 +21,7 @@ export default function Home() {
         })
     }
 
+
     async function postRequest(e){
         e.preventDefault()
         const response = await axios.post('/api/scrapper', {url})
@@ -46,7 +47,7 @@ export default function Home() {
         </form>
         { data.length !== 0 ? data.map((type) => {
             // eslint-disable-next-line react/jsx-key
-            return <div ref={mainDiv}>
+            return <div >
                 <h3 > {type.title}</h3>
                 <CustomInput value={type.price}/>
                 <div>
@@ -58,11 +59,22 @@ export default function Home() {
                 <div className={styles.gallery}>
                     {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
                 </div>
-                <div> <h4>Расположение:</h4> <CustomInput value={type.location}/> </div>
-            </div>
-        }) : ''}
-            <button onClick={generatePdf}> pdf </button>
 
+                <div>
+                    <h4>Расположение:</h4>
+                    <CustomInput value={type.location}/>
+                </div>
+
+                <div>
+                    <button className={styles.miniButton} onClick={generatePdf}> Сгенерировать PDF </button>
+                </div>
+            </div>
+
+
+        }) : ''}
+            <div ref={mainDiv} >
+               123
+            </div>
     </div>
 
 
