@@ -2,8 +2,9 @@ import styles from '../styles/Home.module.css'
 import axios from "axios";
 import {useRef, useState} from "react";
 import { jsPDF } from "jspdf";
-
+import MyFont from "../public/YanoneKaffeesatz.ttf"
 export default function Home() {
+
     const [url,setUrl] = useState('')
     const [data, setData] = useState([])
 
@@ -12,6 +13,9 @@ export default function Home() {
     const generatePdf = () =>{
         const ref = mainDiv.current
         const doc = new jsPDF("p","pt","a4");
+        doc.addFileToVFS("YanoneKaffeesatz.ttf",MyFont)
+        doc.addFont("YanoneKaffeesatz.ttf","YanoneKaffeesatz","normal")
+        doc.setFont("YanoneKaffeesatz")
         doc.html(ref, {
             callback: function (pdf){
                 pdf.save('card.pdf')
