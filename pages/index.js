@@ -1,10 +1,9 @@
 import styles from '../styles/Home.module.css'
 import axios from "axios";
-import {useEffect, useRef, useState} from "react";
+import {useRef, useState} from "react";
 import { jsPDF } from "jspdf";
 
 export default function Home() {
-    const [el,setEl] = useState(null)
     const [url,setUrl] = useState('')
     const [data, setData] = useState([])
 
@@ -12,7 +11,7 @@ export default function Home() {
 
     const generatePdf = () =>{
         const ref = mainDiv.current
-        const doc = new jsPDF();
+        const doc = new jsPDF("p","pt","a4");
         doc.html(ref, {
             callback: function (pdf){
                 pdf.save('card.pdf')
