@@ -50,7 +50,7 @@ export default function Home() {
         </form>
         { data.length !== 0 ? data.map((type) => {
             // eslint-disable-next-line react/jsx-key
-            return <div ref={mainDiv}>
+            return <div ref={mainDiv} className={styles.wrapper}>
                 <h3 > {type.title}</h3>
                 <CustomInput value={type.price} hidden={hiddenElement}/>
                 <div>
@@ -74,7 +74,7 @@ export default function Home() {
                     : "" }
                 </div>
 
-                <div>
+                <div className={styles.contact}>
                     {
                         hiddenElement ? "" : "Ваш специалист по недвижимости Артем +7 111 9321 72 74"
                     }

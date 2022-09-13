@@ -36,5 +36,10 @@
     padding: 15px;
     list-style: none;
 }
-.description li{
+.contact{
+    text-align: right;
+    padding-right: 100px;
+}
+.wrapper{
+    margin: 30px 0;
 }
