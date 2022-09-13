@@ -1,25 +1,21 @@
 import styles from '../styles/Home.module.css'
 import axios from "axios";
 import {useEffect, useState} from "react";
-import Image from "next/image";
+import { jsPDF } from "jspdf";
 
 export default function Home() {
+    let element = typeof window !== 'undefined' ? document.getElementById('mainDiv') : null
     const [url,setUrl] = useState('')
     const [data, setData] = useState([])
 
-    const [initialPrice, setInitialPrice] = useState('')
-    const [flatLocation, setFlatLocation] = useState('')
-
-
-
-
-    useEffect(()=>{
-        const price = data[0]?.price
-        const location = data[0]?.location
-        setFlatLocation(location)
-        setInitialPrice(price)
-    },[data])
-
+    const generatePdf = () =>{
+        const doc = new jsPDF("p","pt","a4");
+        doc.html(element, {
+            callback: function (pdf){
+                pdf.save('card.pdf')
+            }
+        })
+    }
     async function postRequest(e){
         e.preventDefault()
         const response = await axios.post('/api/scrapper', {url})
@@ -44,7 +40,8 @@ export default function Home() {
      </button>
         </form>
         { data.length !== 0 ? data.map((type) => {
-            return <>
+            // eslint-disable-next-line react/jsx-key
+            return <div id={"mainDiv"}>
                 <h3 > {type.title}</h3>
                 <CustomInput value={type.price}/>
                 <div>
@@ -57,9 +54,9 @@ export default function Home() {
                     {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
                 </div>
                 <div> <h4>Расположение:</h4> <CustomInput value={type.location}/> </div>
-            </>
+            </div>
         }) : ''}
-
+            <button onClick={generatePdf}> pdf </button>
     </div>
   )
 }
