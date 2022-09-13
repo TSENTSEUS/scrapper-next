@@ -2,9 +2,8 @@ import styles from '../styles/Home.module.css'
 import axios from "axios";
 import {useRef, useState} from "react";
 import { jsPDF } from "jspdf";
-import MyFont from "../public/YanoneKaffeesatz.ttf"
+import html2canvas from 'html2canvas';
 export default function Home() {
-
     const [url,setUrl] = useState('')
     const [data, setData] = useState([])
 
@@ -12,14 +11,13 @@ export default function Home() {
 
     const generatePdf = () =>{
         const ref = mainDiv.current
-        const doc = new jsPDF("p","pt","a4");
-        doc.addFileToVFS("YanoneKaffeesatz.ttf",MyFont)
-        doc.addFont("YanoneKaffeesatz.ttf","YanoneKaffeesatz","normal")
-        doc.setFont("YanoneKaffeesatz")
-        doc.html(ref, {
-            callback: function (pdf){
-                pdf.save('card.pdf')
-            }
+        html2canvas(ref, {logging: true,useCORS:true}).then(canvas =>{
+            const imgWidth = 600
+            const imgHeight = canvas.height * imgWidth /canvas.width
+            const imgData = canvas.toDataURL('img/png')
+            const pdf = new jsPDF('p',"pt","a4")
+            pdf.addImage(imgData,'PNG',0,0, imgWidth, imgHeight)
+            pdf.save("newPdf.pdf")
         })
     }
 
@@ -48,7 +46,7 @@ export default function Home() {
         </form>
         { data.length !== 0 ? data.map((type) => {
             // eslint-disable-next-line react/jsx-key
-            return <div ref={mainDiv}>
+            return <div >
                 <h3 > {type.title}</h3>
                 <CustomInput value={type.price}/>
                 <div>
@@ -64,7 +62,11 @@ export default function Home() {
             </div>
         }) : ''}
             <button onClick={generatePdf}> pdf </button>
+        <div ref={mainDiv}>
+            БЕБРа чцувапролждлорпенгш
+        </div>
     </div>
+
 
   )
 }
