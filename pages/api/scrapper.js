@@ -8,10 +8,10 @@ const axios = require('axios')
 export default async function handler(req,res) {
     try {
         const result = await axios.get(req.body.url,{
-            headers: [
-                { key: "Access-Control-Allow-Credentials", value: "true" },
-                { key: "Access-Control-Allow-Origin", value: "*" },
-            ]
+           headers:{
+               "Access-Control-Allow-Credentials": "true",
+               "Access-Control-Allow-Origin": "*" ,
+           }
         })
             .then(res => {
                 const img = []
