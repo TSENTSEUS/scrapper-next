@@ -46,7 +46,7 @@ export default function Home() {
         </form>
         { data.length !== 0 ? data.map((type) => {
             // eslint-disable-next-line react/jsx-key
-            return <div >
+            return <div ref={mainDiv}>
                 <h3 > {type.title}</h3>
                 <CustomInput value={type.price}/>
                 <div>
@@ -62,9 +62,7 @@ export default function Home() {
             </div>
         }) : ''}
             <button onClick={generatePdf}> pdf </button>
-        <div ref={mainDiv}>
-            БЕБРа чцувапролждлорпенгш
-        </div>
+
     </div>
 
 
