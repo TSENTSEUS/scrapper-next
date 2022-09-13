@@ -6,18 +6,20 @@ import html2canvas from 'html2canvas';
 export default function Home() {
     const [url,setUrl] = useState('')
     const [data, setData] = useState([])
-
+    const [hiddenElement,setHiddenElement] = useState(true)
     const mainDiv = useRef()
 
     const generatePdf = () =>{
         const ref = mainDiv.current
         html2canvas(ref, {logging: true,useCORS:true}).then(canvas =>{
+            setHiddenElement(false)
             const imgWidth = 600
             const imgHeight = canvas.height * imgWidth /canvas.width
             const imgData = canvas.toDataURL('img/png')
             const pdf = new jsPDF('p',"pt","a4")
             pdf.addImage(imgData,'PNG',0,0, imgWidth, imgHeight)
             pdf.save("newPdf.pdf")
+            setHiddenElement(true)
         })
     }
 
@@ -67,6 +69,11 @@ export default function Home() {
 
                 <div>
                     <button className={styles.miniButton} onClick={generatePdf}> Сгенерировать PDF </button>
+                </div>
+                <div>
+                    {
+                        hiddenElement ? "" : "Ваш специалист по недвижимости Петров Артем +7 911 975 75 24"
+                    }
                 </div>
             </div>
 
