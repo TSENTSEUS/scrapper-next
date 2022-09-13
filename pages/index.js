@@ -21,7 +21,7 @@ export default function Home() {
             pdf.save("newPdf.pdf")
             setTimeout(() => {
                 setHiddenElement(true)
-            },1000)
+            },2500)
         })
     }
 
