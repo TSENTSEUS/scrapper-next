@@ -21,7 +21,7 @@ export default function Home() {
             pdf.save("newPdf.pdf")
             setTimeout(() => {
                 setHiddenElement(true)
-            },2500)
+            },1000)
         })
     }
 
@@ -52,7 +52,7 @@ export default function Home() {
             // eslint-disable-next-line react/jsx-key
             return <div ref={mainDiv}>
                 <h3 > {type.title}</h3>
-                <CustomInput value={type.price}/>
+                <CustomInput value={type.price} hidden={hiddenElement}/>
                 <div>
                  О квартире:
                 <ul className={styles.description}>
@@ -65,11 +65,13 @@ export default function Home() {
 
                 <div>
                     <h4>Расположение:</h4>
-                    <CustomInput value={type.location}/>
+                    <CustomInput value={type.location} hidden={hiddenElement}/>
                 </div>
 
                 <div>
-                    <button className={styles.miniButton} onClick={generatePdf}> Сгенерировать PDF </button>
+                    { hiddenElement ?
+                        <button className={styles.miniButton} onClick={generatePdf}> Сгенерировать PDF </button>
+                    : "" }
                 </div>
 
                 <div>
@@ -86,7 +88,7 @@ export default function Home() {
   )
 }
 
-const CustomInput = ({value}) => {
+const CustomInput = ({value, hidden}) => {
     function editData(e){
         e.preventDefault()
         setEdit(!edit)
@@ -99,9 +101,11 @@ const CustomInput = ({value}) => {
             ? <input value={data1} className={styles.miniInput}
                      onChange={(e) => setData1(e.target.value)}/>
             : data1}
-            <button className={styles.miniButton} onClick={editData}>
+            {
+                hidden ? <button className={styles.miniButton} onClick={editData}>
                 Изменить
-            </button>
+                </button> : <div></div>
+            }
         </div>
 
     )
