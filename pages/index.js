@@ -19,10 +19,11 @@ export default function Home() {
             const pdf = new jsPDF('p',"pt","a4")
             pdf.addImage(imgData,'PNG',0,0, imgWidth, imgHeight)
             pdf.save("newPdf.pdf")
-            setHiddenElement(true)
+            setTimeout(() => {
+                setHiddenElement(true)
+            },1000)
         })
     }
-
 
     async function postRequest(e){
         e.preventDefault()
@@ -70,13 +71,13 @@ export default function Home() {
                 <div>
                     <button className={styles.miniButton} onClick={generatePdf}> Сгенерировать PDF </button>
                 </div>
+
                 <div>
                     {
                         hiddenElement ? "" : "Ваш специалист по недвижимости Петров Артем +7 911 975 75 24"
                     }
                 </div>
             </div>
-
 
         }) : ''}
     </div>
