@@ -9,8 +9,8 @@ export default function Home() {
     const [hiddenElement,setHiddenElement] = useState(true)
     const mainDiv = useRef()
 
-    const generatePdf = () =>{
-        setHiddenElement(false)
+     const generatePdf = async () =>{
+        await setHiddenElement(false)
         const ref = mainDiv.current
         html2canvas(ref, {logging: true,useCORS:true}).then(canvas =>{
             const imgWidth = 600
@@ -74,7 +74,7 @@ export default function Home() {
 
                 <div>
                     {
-                        hiddenElement ? "" : "Ваш специалист по недвижимости Петров Артем +7 911 975 75 24"
+                        hiddenElement ? "" : "Ваш специалист по недвижимости Артем +7 111 9321 72 74"
                     }
                 </div>
             </div>
