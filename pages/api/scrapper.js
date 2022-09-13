@@ -24,7 +24,7 @@ export default async function handler(req,res) {
                     const title = $(e).text();
                     obj['title'] = title
                 })
-                $('.styles-extended-gallery-img-_q67M').each((i,e )=>{
+                $('.styles-extended-gallery-img-_q67M img').each((i,e )=>{
                     const src = $(e).attr('src')
                     img.push(src)
                 })
