@@ -8,14 +8,12 @@ export default function Home() {
     const [url,setUrl] = useState('')
     const [data, setData] = useState([])
 
-    const mainDiv = useRef(null)
-    useEffect(() => {
-        setEl(mainDiv)
-    },[data])
+    const mainDiv = useRef()
 
     const generatePdf = () =>{
+        const ref = mainDiv.current
         const doc = new jsPDF();
-        doc.html(el, {
+        doc.html(ref, {
             callback: function (pdf){
                 pdf.save('card.pdf')
             }
@@ -64,6 +62,7 @@ export default function Home() {
         }) : ''}
             <button onClick={generatePdf}> pdf </button>
     </div>
+
   )
 }
 
@@ -84,5 +83,6 @@ const CustomInput = ({value}) => {
                 Изменить
             </button>
         </div>
+
     )
 }
