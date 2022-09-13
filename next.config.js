@@ -5,7 +5,7 @@ const nextConfig = {
   images:{
     domains: ['53.img.avito.st'],
     formats: ['image/avif', 'image/webp']
-  }
+  },
 }
 
 module.exports = nextConfig
