@@ -10,9 +10,9 @@ export default function Home() {
     const mainDiv = useRef()
 
     const generatePdf = () =>{
+        setHiddenElement(false)
         const ref = mainDiv.current
         html2canvas(ref, {logging: true,useCORS:true}).then(canvas =>{
-            setHiddenElement(false)
             const imgWidth = 600
             const imgHeight = canvas.height * imgWidth /canvas.width
             const imgData = canvas.toDataURL('img/png')
