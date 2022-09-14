@@ -14,7 +14,6 @@ export default async function handler(req,res) {
                 const obj = {}
                 const list = [obj]
                 obj['description'] = about
-                obj['images'] = img
                 const $ = cheerio.load(res.data);
                 $('.title-info-title-text').each((i, e) => {
                     const title = $(e).text();
@@ -24,10 +23,6 @@ export default async function handler(req,res) {
                     const initialData = $(e).text()
                     console.log(initialData)
                     obj['initialData'] = initialData
-                })
-                $('.image-frame-wrapper-_NvbY img').each((i,e )=>{
-                    const src = $(e).attr('src')
-                    img.push(src)
                 })
                 $('li[class=params-paramsList__item-appQw]').each((i, e) => {
                     const style = $(e).find('style').remove()
