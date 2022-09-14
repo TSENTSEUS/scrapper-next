@@ -51,9 +51,9 @@ export default function Home() {
         await setHiddenElement(false)
         const ref = mainDiv.current
         html2canvas(ref, {logging: true,useCORS:true}).then(canvas =>{
-            const imgData = canvas.toDataURL('img/png')
-            const pdf = new jsPDF('p',"pt",[canvas.width,canvas.height])
-            pdf.addImage(imgData,'PNG',0,0, canvas.width, canvas.height)
+            const imgData = canvas.toDataURL('img/png', 1.0)
+            const pdf = new jsPDF('p',"pt",[400,480])
+            pdf.addImage(imgData,'PNG',0,0, 400, 480)
             pdf.save("newPdf.pdf")
             setTimeout(() => {
                 setHiddenElement(true)
