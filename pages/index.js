@@ -89,9 +89,8 @@ export default function Home() {
                 </ul>
                 </div>
                 {
-                    urlEncode
+                    urlEncode()
                 }
-
                 <div>
                     <h4>Расположение:</h4>
                     <CustomInput value={type.location} hidden={hiddenElement}/>
