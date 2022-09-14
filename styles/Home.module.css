@@ -55,6 +55,6 @@
 }
 .imageContainer{
     position: relative;
-    width: fit-content;
+    width: 70%;
     margin: 0 auto;
 }
