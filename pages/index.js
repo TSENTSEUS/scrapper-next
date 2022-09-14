@@ -66,11 +66,7 @@ export default function Home() {
     }
     async function postRequest(e){
         e.preventDefault()
-        const response = await axios.post('/api/scrapper', {url}, {
-          headers:{
-              "Access-Control-Allow-Origin":"*"
-          }
-        })
+        const response = await axios.post('/api/scrapper', {url},)
         setData(response.data)
         console.log('Data List: ', response.data)
     }
