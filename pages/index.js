@@ -12,15 +12,15 @@ export default function Home() {
     const mainDiv = useRef()
 
     const [data, setData] = useState([])
-    const [imageData, setInitialData] = useState(null)
+    const [imageData, setImageData] = useState('')
 
     useEffect(()=>{
         const initial = data[0]?.initialData
-        setInitialData(initial)
+        setImageData(initial)
     }, [data])
     
     const urlEncode =  () => {
-        const initialData = decodeURIComponent(String(imageData))
+        const initialData = decodeURIComponent(imageData)
         const pattern = /\"(.*)\";/gm
         const finalData = initialData.match(pattern)
         const dataToParse = finalData[0].substring(1, finalData[0].length - 2)
