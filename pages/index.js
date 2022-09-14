@@ -16,6 +16,8 @@ export default function Home() {
 
     useEffect(()=>{
         const initial = data[0]?.initialData
+        console.log(data[0])
+        console.log(initial)
         setImageData(initial)
     }, [data])
     
