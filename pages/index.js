@@ -63,10 +63,11 @@ export default function Home() {
        Запрос
      </button>
         </form>
-        { data.length !== 0 ? data.map((type) => {
+        { data.length !== 0 ? data.map((type, key) => {
             urlEncode(type.initialData)
 
-            return <div ref={mainDiv} className={styles.wrapper}>
+            return <div key={key}
+                        ref={mainDiv} className={styles.wrapper}>
                 <h3 > {type.title}</h3>
                 <CustomInput value={type.price} hidden={hiddenElement}/>
                 <div>
