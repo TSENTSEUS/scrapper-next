@@ -4,8 +4,6 @@ import {useEffect, useRef, useState} from "react";
 import {jsPDF} from "jspdf";
 import html2canvas from 'html2canvas';
 import CustomInput from "../components/CustomInput";
-import {image} from "html2canvas/dist/types/css/types/image";
-import {init} from "next/dist/compiled/webpack/webpack";
 
 export default function Home() {
 
