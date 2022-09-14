@@ -16,12 +16,12 @@ export default function Home() {
 
     useEffect(()=>{
         const initial = data[0]?.initialData
-        console.log(data[0])
-        console.log(initial)
         setImageData(initial)
     }, [data])
-    
-    const urlEncode =  () => {
+
+    console.log(imageData)
+
+    const urlEncode = () => {
         const initialData = decodeURIComponent(imageData)
         const pattern = /\"(.*)\";/gm
         const finalData = initialData.match(pattern)
@@ -90,9 +90,11 @@ export default function Home() {
                     {type.description.map((e,i) => <li key={i}>{e}</li>)}
                 </ul>
                 </div>
-                {
-                    urlEncode()
-                }
+
+                {/*{*/}
+                {/*    urlEncode()*/}
+                {/*}*/}
+
                 <div>
                     <h4>Расположение:</h4>
                     <CustomInput value={type.location} hidden={hiddenElement}/>
