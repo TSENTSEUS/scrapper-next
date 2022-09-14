@@ -4,6 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import {jsPDF} from "jspdf";
 import html2canvas from 'html2canvas';
 import CustomInput from "../components/CustomInput";
+import {image} from "html2canvas/dist/types/css/types/image";
 
 export default function Home() {
 
@@ -32,7 +33,8 @@ export default function Home() {
             return null
         }
         const bxItemView = findByKey(parsedData, key => key.startsWith('@avito/bx-item-view'))
-        return console.log(bxItemView['buyerItem']['item']['imageUrls'])
+        const imageList = bxItemView['buyerItem']['item']['imageUrls']
+        return imageList.map((img,i) => <img key={i} src={img['1280x960']}/>)
     }
 
      const generatePdf = async () =>{
@@ -87,13 +89,10 @@ export default function Home() {
                     {type.description.map((e,i) => <li key={i}>{e}</li>)}
                 </ul>
                 </div>
-
-                <div className={styles.gallery}>
-                    {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
-                </div>
                 {
                     urlEncode
                 }
+
                 <div>
                     <h4>Расположение:</h4>
                     <CustomInput value={type.location} hidden={hiddenElement}/>
