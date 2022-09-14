@@ -50,17 +50,10 @@ export default function Home() {
      const generatePdf = async () =>{
         await setHiddenElement(false)
         const ref = mainDiv.current
-        html2canvas(ref, {
-            allowTaint: true,
-            useCORS: true,
-            logging: false,
-            windowHeight: window.outerHeight + window.innerHeight,
-            height: window.outerHeight + window.innerHeight,
-        }).then(canvas =>{
-
+        html2canvas(ref, {logging: true,useCORS:true}).then(canvas =>{
             const imgData = canvas.toDataURL('img/png')
-            const pdf = new jsPDF('p',"pt","a4")
-            pdf.addImage(imgData,'PNG' )
+            const pdf = new jsPDF('p',"pt",[canvas.width,canvas.height])
+            pdf.addImage(imgData,'PNG',0,0, canvas.width, canvas.height)
             pdf.save("newPdf.pdf")
             setTimeout(() => {
                 setHiddenElement(true)
