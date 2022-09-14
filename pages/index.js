@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 import axios from "axios";
 import {useEffect, useRef, useState} from "react";
-import { jsPDF } from "jspdf";
+import {jsPDF} from "jspdf";
 import html2canvas from 'html2canvas';
 import CustomInput from "../components/CustomInput";
 
@@ -17,7 +17,7 @@ export default function Home() {
         const initial = data[0]?.initialData
         setInitialData(initial)
         imageData != null 
-            ? setInitialData(urlEncode()) : null
+            ? setInitialData(urlEncode) : null
     },[data, imageData])
     
     const urlEncode =  () => {
@@ -34,8 +34,7 @@ export default function Home() {
         }
         const bxItemView = findByKey(parsedData, key => key.startsWith('@avito/bx-item-view'))
         const imageList = bxItemView['buyerItem']['item']['imageUrls']
-        const parsedImages = imageList.map(img => img['1280x960'])
-        return parsedImages
+        return console.log(imageList.map(img => img['1280x960']))
     }
 
      const generatePdf = async () =>{
@@ -90,6 +89,7 @@ export default function Home() {
                     {type.description.map((e,i) => <li key={i}>{e}</li>)}
                 </ul>
                 </div>
+
                 <div className={styles.gallery}>
                     {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
                 </div>
