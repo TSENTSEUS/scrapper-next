@@ -105,7 +105,7 @@ export default function Home() {
                     <div>
                         {imageData.map((img, i) =>
                             <div key={i} className={styles.imageContainer}>
-                                <img  src={img.url} alt={''}/>
+                                <img  src={img.url} alt={''} style={{width:'100%'}}/>
                                 <button className={styles.deleteBtn} onClick={() => deleteImg(img.id)}> Удалить </button>
                             </div>
                             )
