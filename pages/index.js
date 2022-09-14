@@ -12,14 +12,21 @@ export default function Home() {
     const [hiddenElement,setHiddenElement] = useState(true)
     const mainDiv = useRef()
 
-    const urlEncode = ({ data }) => {
+    const urlEncode = ({data}) => {
         const initialData = decodeURIComponent(data)
         const pattern = /\"(.*)\";/gm
         const finalData = initialData.match(pattern)
         const dataToParse = finalData[0].substring(1, finalData[0].length - 2)
         const parsedData = JSON.parse(dataToParse)
-        const imageList = parsedData['@avito/bx-item-view:1.480.2']['buyerItem']['item']['imageUrls']
-        imageList.map((img) => console.log(img['1280x960']))
+        const findByKey = (object, fn) => {
+            for(const key in object){
+                if(fn(key)) return object[key]
+            }
+            return null
+        }
+        const bxItemView = findByKey(parsedData, key => key.startsWith('@avito/bx-item-view'))
+        const imageList = bxItemView['buyerItem']['item']['imageUrls']
+        console.log(imageList.map(img => img['1280x960']))
     }
 
      const generatePdf = async () =>{
@@ -65,7 +72,6 @@ export default function Home() {
         </form>
         { data.length !== 0 ? data.map((type, key) => {
             urlEncode(type.initialData)
-
             return <div key={key}
                         ref={mainDiv} className={styles.wrapper}>
                 <h3 > {type.title}</h3>
