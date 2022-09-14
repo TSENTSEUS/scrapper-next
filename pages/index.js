@@ -84,7 +84,6 @@ export default function Home() {
         const response = await axios.post('/api/scrapper', {url},{
             headers:{
                 "Access-Control-Allow-Origin": "*" ,
-                "Content-Type":"application/x-www-form-urlencoded"
             }
         })
         setData(response.data)

@@ -10,7 +10,6 @@ export default async function handler(req,res) {
         const result = await axios.get(req.body.url,{
             headers:{
                 "Access-Control-Allow-Origin": "*" ,
-                "Content-Type":"application/x-www-form-urlencoded"
             }
         })
             .then(res => {
