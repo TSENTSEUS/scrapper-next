@@ -91,7 +91,9 @@ export default function Home() {
                 <div className={styles.gallery}>
                     {type.images.map((e,i) => <img src={e} alt={''} key={i} />)}
                 </div>
-
+                {
+                    urlEncode
+                }
                 <div>
                     <h4>Расположение:</h4>
                     <CustomInput value={type.location} hidden={hiddenElement}/>
