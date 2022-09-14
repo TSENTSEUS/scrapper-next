@@ -44,3 +44,17 @@
 .wrapper{
     margin: 30px 0;
 }
+.deleteBtn{
+    border-radius: 2px;
+    padding: 4px;
+    position:absolute;
+    border: 1px solid gray;
+    top:0;
+    right: 0;
+    background: #ff4d4d;
+}
+.imageContainer{
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}

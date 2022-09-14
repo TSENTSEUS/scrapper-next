@@ -68,11 +68,7 @@ export default function Home() {
     }
     async function postRequest(e){
         e.preventDefault()
-        const response = await axios.post('/api/scrapper', {url},{
-            headers:{
-                "Access-Control-Allow-Origin": "https://scrapper-next.herokuapp.com"
-            }
-        })
+        const response = await axios.post('/api/scrapper', {url},)
         setData(response.data)
         console.log('Data List: ', response.data)
     }
@@ -106,10 +102,10 @@ export default function Home() {
                 {
                     <div>
                         {imageData.map((img, i) =>
-                            <>
-                            <img key={i} src={img.url} alt={''}/>
-                            <button onClick={() => deleteImg(img.id)}> Delete </button>
-                            </>
+                            <div key={i} className={styles.imageContainer}>
+                                <img  src={img.url} alt={''}/>
+                                <button style={styles.deleteBtn} onClick={() => deleteImg(img.id)}> Delete </button>
+                            </div>
                             )
                         }
                     </div>
