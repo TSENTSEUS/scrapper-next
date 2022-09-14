@@ -116,8 +116,6 @@ export default function Home() {
                 </ul>
                 </div>
 
-                {
-                    <div>
                         {imageData.map((img, i) =>
                             <div key={i} className={styles.imageContainer}>
                                 <img  src={img.url} alt={''} style={{width:'100%'}}/>
@@ -125,8 +123,6 @@ export default function Home() {
                             </div>
                             )
                         }
-                    </div>
-                }
 
                 <div>
                     <h4>Расположение:</h4>
