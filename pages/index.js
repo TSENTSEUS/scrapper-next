@@ -12,7 +12,7 @@ export default function Home() {
     const [hiddenElement,setHiddenElement] = useState(true)
     const mainDiv = useRef()
 
-    const urlEncode = ({data}) => {
+    const urlEncode = (data) => {
         const initialData = decodeURIComponent(data)
         const pattern = /\"(.*)\";/gm
         const finalData = initialData.match(pattern)
