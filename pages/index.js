@@ -4,12 +4,22 @@ import {useRef, useState} from "react";
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 import CustomInput from "../components/CustomInput";
+
 export default function Home() {
 
     const [url,setUrl] = useState('')
     const [data, setData] = useState([])
     const [hiddenElement,setHiddenElement] = useState(true)
     const mainDiv = useRef()
+    const urlEncode = () => {
+        const initialData = decodeURIComponent(data['initialData'])
+        const pattern = /\"(.*)\";/gm
+        const finalData = initialData.match(pattern)
+        const dataToParse = finalData[0].substring(1, finalData[0].length - 2)
+        const parsedData = JSON.parse(dataToParse)
+        const imageList = parsedData['@avito/bx-item-view:1.480.2']['buyerItem']['item']['imageUrls']
+        imageList.map((img) => console.log(img['1280x960']))
+    }
 
      const generatePdf = async () =>{
         await setHiddenElement(false)
@@ -86,6 +96,7 @@ export default function Home() {
             </div>
 
         }) : ''}
+        <button onClick={urlEncode}>Decode</button>
     </div>
 
   )
