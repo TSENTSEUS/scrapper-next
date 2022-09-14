@@ -16,7 +16,10 @@ export default function Home() {
 
     useEffect(()=>{
         const initial = data[0]?.initialData
-        setImageData(initial)
+        if(initial){
+            const result = urlEncode(initial)
+            setImageData(result)
+        }
     }, [data])
 
 
@@ -37,7 +40,11 @@ export default function Home() {
         }
         const bxItemView = findByKey(parsedData, key => key.startsWith('@avito/bx-item-view'))
         const imageList = bxItemView['buyerItem']['item']['imageUrls']
-        return imageList.map((img,i) => <img key={i} src={img['1280x960']} alt={''}/>)
+        return imageList.map((img, i) => ({
+            url:img['1280x960'],
+            id:i
+            }))
+        // return imageList.map((img,i) => <img key={i} src={img['1280x960']} alt={''}/>)
     }
 
      const generatePdf = async () =>{
@@ -55,7 +62,10 @@ export default function Home() {
             },1000)
         })
     }
-
+    function deleteImg(id){
+        const result = imageData.filter(img => img.id !== id)
+        setImageData(result)
+    }
     async function postRequest(e){
         e.preventDefault()
         const response = await axios.post('/api/scrapper', {url},{
@@ -94,7 +104,15 @@ export default function Home() {
                 </div>
 
                 {
-                    urlEncode(imageData)
+                    <div>
+                        {imageData.map((img, i) =>
+                            <>
+                            <img key={i} src={img.url} alt={''}/>
+                            <button onClick={() => deleteImg(img.id)}> Delete</button>
+                            </>
+                            )
+                        }
+                    </div>
                 }
 
                 <div>
