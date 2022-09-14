@@ -9,7 +9,7 @@ export default async function handler(req,res) {
     try {
         const result = await axios.get(req.body.url,{
             headers:{
-                "Access-Control-Allow-Origin": "*"
+                "Access-Control-Allow-Origin": "https://scrapper-next.herokuapp.com"
             }
         })
             .then(res => {
