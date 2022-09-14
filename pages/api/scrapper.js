@@ -9,7 +9,8 @@ export default async function handler(req,res) {
     try {
         const result = await axios.get(req.body.url,{
             headers:{
-                "Access-Control-Allow-Origin": "anonymous"
+                "Access-Control-Allow-Origin": "*",
+                'Content-Type': 'application/json',
             }
         })
             .then(res => {
