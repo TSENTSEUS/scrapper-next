@@ -104,7 +104,7 @@ export default function Home() {
                         {imageData.map((img, i) =>
                             <div key={i} className={styles.imageContainer}>
                                 <img  src={img.url} alt={''}/>
-                                <button style={styles.deleteBtn} onClick={() => deleteImg(img.id)}> Delete </button>
+                                <button className={styles.deleteBtn} onClick={() => deleteImg(img.id)}> Delete </button>
                             </div>
                             )
                         }
