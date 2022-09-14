@@ -105,7 +105,6 @@ export default function Home() {
             </div>
 
         }) : ''}
-        <button onClick={urlEncode}>Decode</button>
     </div>
 
   )
