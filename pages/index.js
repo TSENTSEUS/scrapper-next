@@ -10,10 +10,18 @@ export default function Home() {
     const [url,setUrl] = useState('')
     const [data, setData] = useState([])
     const [hiddenElement,setHiddenElement] = useState(true)
+    const [imageData, setInitialData] = useState(null)
     const mainDiv = useRef()
-
-    const urlEncode = (data) => {
-        const initialData = decodeURIComponent(data)
+    
+    useEffect(()=>{
+        const initial = data[0]?.initialData
+        setInitialData(initial)
+        imageData != null 
+            ? setInitialData(urlEncode()) : null
+    },[data, imageData])
+    
+    const urlEncode =  () => {
+        const initialData = decodeURIComponent(String(imageData))
         const pattern = /\"(.*)\";/gm
         const finalData = initialData.match(pattern)
         const dataToParse = finalData[0].substring(1, finalData[0].length - 2)
@@ -26,7 +34,8 @@ export default function Home() {
         }
         const bxItemView = findByKey(parsedData, key => key.startsWith('@avito/bx-item-view'))
         const imageList = bxItemView['buyerItem']['item']['imageUrls']
-        console.log(imageList.map(img => img['1280x960']))
+        const parsedImages = imageList.map(img => img['1280x960'])
+        return parsedImages
     }
 
      const generatePdf = async () =>{
@@ -71,7 +80,6 @@ export default function Home() {
      </button>
         </form>
         { data.length !== 0 ? data.map((type, key) => {
-            urlEncode(type.initialData)
             return <div key={key}
                         ref={mainDiv} className={styles.wrapper}>
                 <h3 > {type.title}</h3>
