@@ -4,7 +4,6 @@ import {useEffect, useRef, useState} from "react";
 import {jsPDF} from "jspdf";
 import html2canvas from 'html2canvas';
 import CustomInput from "../components/CustomInput";
-import {image} from "html2canvas/dist/types/css/types/image";
 
 export default function Home() {
 
@@ -34,7 +33,7 @@ export default function Home() {
         }
         const bxItemView = findByKey(parsedData, key => key.startsWith('@avito/bx-item-view'))
         const imageList = bxItemView['buyerItem']['item']['imageUrls']
-        return imageList.map((img,i) => <img key={i} src={img['1280x960']}/>)
+        return imageList.map((img,i) => <img key={i} src={img['1280x960']} alt={''}/>)
     }
 
      const generatePdf = async () =>{
