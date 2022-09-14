@@ -50,12 +50,17 @@ export default function Home() {
      const generatePdf = async () =>{
         await setHiddenElement(false)
         const ref = mainDiv.current
-        html2canvas(ref, {logging: true,useCORS:true}).then(canvas =>{
-            const imgWidth = 600
-            const imgHeight = canvas.height * imgWidth /canvas.width
+        html2canvas(ref, {
+            allowTaint: true,
+            useCORS: true,
+            logging: false,
+            windowHeight: window.outerHeight + window.innerHeight,
+            height: window.outerHeight + window.innerHeight,
+        }).then(canvas =>{
+
             const imgData = canvas.toDataURL('img/png')
             const pdf = new jsPDF('p',"pt","a4")
-            pdf.addImage(imgData,'PNG',0,0, imgWidth, imgHeight)
+            pdf.addImage(imgData,'PNG' )
             pdf.save("newPdf.pdf")
             setTimeout(() => {
                 setHiddenElement(true)
@@ -68,7 +73,11 @@ export default function Home() {
     }
     async function postRequest(e){
         e.preventDefault()
-        const response = await axios.post('/api/scrapper', {url},)
+        const response = await axios.post('/api/scrapper', {url},{
+            headers:{
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
         setData(response.data)
         console.log('Data List: ', response.data)
     }
@@ -104,7 +113,7 @@ export default function Home() {
                         {imageData.map((img, i) =>
                             <div key={i} className={styles.imageContainer}>
                                 <img  src={img.url} alt={''}/>
-                                <button className={styles.deleteBtn} onClick={() => deleteImg(img.id)}> Delete </button>
+                                <button className={styles.deleteBtn} onClick={() => deleteImg(img.id)}> Удалить </button>
                             </div>
                             )
                         }

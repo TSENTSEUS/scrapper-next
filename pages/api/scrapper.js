@@ -7,7 +7,11 @@ const axios = require('axios')
 
 export default async function handler(req,res) {
     try {
-        const result = await axios.get(req.body.url)
+        const result = await axios.get(req.body.url,{
+            headers:{
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
             .then(res => {
                 const img = []
                 const about = []
