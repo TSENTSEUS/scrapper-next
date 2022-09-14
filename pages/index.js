@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css'
 import axios from "axios";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 import CustomInput from "../components/CustomInput";
@@ -11,8 +11,9 @@ export default function Home() {
     const [data, setData] = useState([])
     const [hiddenElement,setHiddenElement] = useState(true)
     const mainDiv = useRef()
-    const urlEncode = () => {
-        const initialData = decodeURIComponent(data['initialData'])
+
+    const urlEncode = ({ data }) => {
+        const initialData = decodeURIComponent(data)
         const pattern = /\"(.*)\";/gm
         const finalData = initialData.match(pattern)
         const dataToParse = finalData[0].substring(1, finalData[0].length - 2)
@@ -63,7 +64,8 @@ export default function Home() {
      </button>
         </form>
         { data.length !== 0 ? data.map((type) => {
-            // eslint-disable-next-line react/jsx-key
+            urlEncode(type.initialData)
+
             return <div ref={mainDiv} className={styles.wrapper}>
                 <h3 > {type.title}</h3>
                 <CustomInput value={type.price} hidden={hiddenElement}/>
