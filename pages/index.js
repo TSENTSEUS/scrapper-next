@@ -18,7 +18,7 @@ export default function Home() {
         setInitialData(initial)
         imageData != null 
             ? setInitialData(urlEncode) : null
-    }, [data, imageData, urlEncode],)
+    }, [data])
     
     const urlEncode =  () => {
         const initialData = decodeURIComponent(String(imageData))
