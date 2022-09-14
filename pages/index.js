@@ -19,9 +19,11 @@ export default function Home() {
         setImageData(initial)
     }, [data])
 
-    console.log(imageData)
 
-    const urlEncode = () => {
+    const urlEncode = (imageData) => {
+        if(!imageData){
+            return <></>
+        }
         const initialData = decodeURIComponent(imageData)
         const pattern = /\"(.*)\";/gm
         const finalData = initialData.match(pattern)
@@ -79,7 +81,7 @@ export default function Home() {
        Запрос
      </button>
         </form>
-        { data.length !== 0 ? data.map((type, key) => {
+        { data.length !== 0 && imageData ? data.map((type, key) => {
             return <div key={key}
                         ref={mainDiv} className={styles.wrapper}>
                 <h3 > {type.title}</h3>
@@ -91,9 +93,9 @@ export default function Home() {
                 </ul>
                 </div>
 
-                {/*{*/}
-                {/*    urlEncode()*/}
-                {/*}*/}
+                {
+                    urlEncode(imageData)
+                }
 
                 <div>
                     <h4>Расположение:</h4>
