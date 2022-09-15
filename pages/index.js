@@ -73,10 +73,11 @@ export default function Home() {
         e.preventDefault()
         const response = await axios({
             method:"post",
-            url:'/api/finalData',
+            url:'https://scrapper-next.herokuapp.com/api/finalData',
             data:{
                 url,
             },
+
         })
         setData(response.data)
         console.log('Data List: ', response.data)
