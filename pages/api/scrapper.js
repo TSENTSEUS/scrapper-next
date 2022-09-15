@@ -1,3 +1,5 @@
+import NextCors from "nextjs-cors";
+
 const cheerio = require('cheerio');
 const axios = require('axios')
 /**
@@ -6,6 +8,12 @@ const axios = require('axios')
  */
 
 export default async function handler(req,res) {
+    await NextCors(req, res, {
+        // Options
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        origin: '*',
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    });
     try {
         const result = await axios.get(req.body.url,{
             headers:{
