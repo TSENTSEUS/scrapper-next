@@ -10,9 +10,6 @@ export default async function handler(req,res) {
         const result = await axios({
             method:"get",
             url:req.body.url,
-            headers:{
-                "Access-Control-Allow-Origin":"https://scrapper-next.herokuapp.com"
-            }
         })
             .then(res => {
                 const about = []

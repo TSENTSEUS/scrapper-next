@@ -63,15 +63,17 @@ export default function Home() {
             },1000)
         })
     }
+
     function deleteImg(id){
         const result = imageData.filter(img => img.id !== id)
         setImageData(result)
     }
+
     async function postRequest(e){
         e.preventDefault()
         const response = await axios({
             method:"post",
-            url:'/api/scrapper',
+            url:'/api/finalData',
             data:{url},
         }).then(res => res)
         setData(response.data)
