@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     // nextjs-cors uses the cors package, so we invite you to check the documentation https://github.com/expressjs/cors
     await NextCors(req, res, {
         // Options
-        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE',"OPTIONS"],
         origin: '*',
         optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     });
