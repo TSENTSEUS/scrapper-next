@@ -52,23 +52,12 @@ export default function Home() {
         const ref = mainDiv.current
         html2canvas(ref, {logging: true,useCORS:true}).then(canvas =>{
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF("p","pt","a4");
-            let imgProps= pdf.getImageProperties(imgData);
-            let pdfWidth = pdf.internal.pageSize.getWidth();
-            let pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-            let heightLeft = pdfHeight;
-            let position = 10; // give some top padding to first page
+            const w = document.getElementById("mainDiv").offsetWidth
+            const h = document.getElementById("mainDiv").offsetHeight
 
-            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-            heightLeft -= pdfHeight;
-
-            while (heightLeft >= 0) {
-                position += heightLeft - pdfHeight; // top padding for other pages
-                pdf.addPage();
-                pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
-                heightLeft -= pdfHeight;
-            }
-
+            const pdf = new jsPDF("p","px",[w,h]);
+            pdf.addImage(imgData, 'PNG', 0, 0, w, h);
+            pdf.addPage();
             pdf.save("newPdf.pdf")
             setTimeout(() => {
                 setHiddenElement(true)
@@ -106,7 +95,9 @@ export default function Home() {
         </form>
         { data.length !== 0 && imageData ? data.map((type, key) => {
             return <div key={key}
-                        ref={mainDiv} className={styles.wrapper}>
+                        ref={mainDiv}
+                        id={"mainDiv"}
+                        className={styles.wrapper}>
                 <h3 > {type.title}</h3>
                 <CustomInput value={type.price} hidden={hiddenElement}/>
                 <div>
