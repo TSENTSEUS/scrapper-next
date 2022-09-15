@@ -5,9 +5,29 @@ const axios = require('axios')
  * @param {import('next').NextApiResponse} res
  */
 
+import Cors from 'cors'
+const cors = Cors({
+    methods: ['POST', 'GET', 'HEAD'],
+})
+function runMiddleware(
+    req,
+    res,
+    fn,
+) {
+    return new Promise((resolve, reject) => {
+        fn(req, res, (result) => {
+            if (result instanceof Error) {
+                return reject(result)
+            }
+
+            return resolve(result)
+        })
+    })
+}
 export default async function handler(req,res) {
-        res.setHeader("Access-Control-Allow-Origin","https://scrapper-next.herokuapp.com")
-        const result = await axios({
+    await runMiddleware(req, res, cors)
+
+    const result = await axios({
             method:"get",
             url:req.body.url,
 
