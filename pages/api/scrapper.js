@@ -43,6 +43,6 @@ export default async function handler(req,res) {
                 console.log(list)
                 return list
             }).catch(err => res.status(500).end(err.message));
-        res.status(200).send(result)
+        res.status(200).json(result)
 }
 
