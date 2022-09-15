@@ -80,7 +80,7 @@ export default function Home() {
 
         })
         setData(response.data)
-        console.log('Data List: ', response.data)
+        console.log('Data List: ', response)
     }
 
   return (
