@@ -9,7 +9,7 @@ export default async function handler(req,res) {
 
         const result = await axios({
             method:"get",
-            url:req.body.url,
+            url:req.body.data.url,
         })
             .then(res => {
                 const about = []

@@ -75,7 +75,7 @@ export default function Home() {
             method:"post",
             url:'/api/finalData',
             data:{url},
-        }).then(res => res)
+        })
         setData(response.data)
         console.log('Data List: ', response.data)
     }

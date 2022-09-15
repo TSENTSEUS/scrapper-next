@@ -1,5 +1,5 @@
 import NextCors from 'nextjs-cors';
-import axios from "axios";
+const axios = require('axios')
 
 /**
  * @param {import('next').NextApiRequest} req
@@ -23,5 +23,5 @@ async function handler(req, res) {
         },
     })
     // Rest of the API logic
-    res.json(result);
+    res.send(result);
 }
