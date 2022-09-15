@@ -22,7 +22,7 @@ export default async function handler(req, res) {
             url:req.body.url,
         },
     }).then(res => {
-        return console.log('res is', res)
+        return res
     }).catch(e => {
         console.log(e.message)
     })
