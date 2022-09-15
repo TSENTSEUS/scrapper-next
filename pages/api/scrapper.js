@@ -6,7 +6,7 @@ const axios = require('axios')
  */
 
 export default async function handler(req,res) {
-
+        res.setHeader("Access-Control-Allow-Origin","https://scrapper-next.herokuapp.com")
         const result = await axios({
             method:"get",
             url:req.body.url,
