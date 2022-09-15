@@ -21,6 +21,10 @@ export default async function handler(req, res) {
         data:{
             url:req.body.url,
         },
+    }).then(res => {
+        return res
+    }).catch(e => {
+        console.log(e.message)
     })
     console.log('req body is :',req.body.url)
     // Rest of the API logic
