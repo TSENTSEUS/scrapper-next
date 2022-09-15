@@ -85,9 +85,6 @@ export default function Home() {
             method:"post",
             url:'/api/scrapper',
             data:{url},
-            headers:{
-                "Access-Control-Allow-Origin":"*"
-            }
         }).then(res => res)
         setData(response.data)
         console.log('Data List: ', response.data)
