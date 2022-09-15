@@ -27,5 +27,6 @@ export default async function handler(req, res) {
         console.log(e.message)
     })
     // Rest of the API logic
-    res.json(result);
+    console.log(result.data)
+    res.send(result.data);
 }
