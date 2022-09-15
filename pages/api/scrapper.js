@@ -6,10 +6,11 @@ const axios = require('axios')
  */
 
 export default async function handler(req,res) {
-
+        console.log(req.body.data.url)
         const result = await axios({
             method:"get",
             url:req.body.data.url,
+
         })
             .then(res => {
                 const about = []

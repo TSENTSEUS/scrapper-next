@@ -74,7 +74,9 @@ export default function Home() {
         const response = await axios({
             method:"post",
             url:'/api/finalData',
-            data:{url},
+            data:{
+                url,
+            },
         })
         setData(response.data)
         console.log('Data List: ', response.data)
