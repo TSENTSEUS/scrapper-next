@@ -83,7 +83,7 @@ export default function Home() {
         e.preventDefault()
         const response = await axios.post('/api/scrapper', {url},{
             headers:{
-                "Access-Control-Allow-Origin": "*" ,
+                "Access-Control-Allow-Origin": "https://scrapper-next.herokuapp.com" ,
             }
         })
         setData(response.data)
