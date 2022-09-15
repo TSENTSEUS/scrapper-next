@@ -84,7 +84,7 @@ export default function Home() {
         const response = await axios({
             method:"post",
             url:'/api/scrapper',
-            data:url,
+            data:{url},
             headers:{
                 "Access-Control-Allow-Origin":"*"
             }
