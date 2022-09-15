@@ -12,6 +12,7 @@ export default async function handler(req, res) {
     await NextCors(req, res, {
         // Options
         methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        host:"https://scrapper-next.herokuapp.com",
         origin: '*',
         optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     });
@@ -22,7 +23,7 @@ export default async function handler(req, res) {
             url:req.body.url,
         },
     }).then(res => {
-        return res
+        return console.log('res is', res)
     }).catch(e => {
         console.log(e.message)
     })
