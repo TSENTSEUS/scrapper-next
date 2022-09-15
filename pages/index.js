@@ -52,7 +52,7 @@ export default function Home() {
         const ref = mainDiv.current
         html2canvas(ref, {logging: true,useCORS:true}).then(canvas =>{
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF();
+            const pdf = new jsPDF("p","pt","a4");
             let imgProps= pdf.getImageProperties(imgData);
             let pdfWidth = pdf.internal.pageSize.getWidth();
             let pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
