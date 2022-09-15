@@ -1,5 +1,3 @@
-import NextCors from "nextjs-cors";
-
 const cheerio = require('cheerio');
 const axios = require('axios')
 /**
@@ -8,12 +6,7 @@ const axios = require('axios')
  */
 
 export default async function handler(req,res) {
-    await NextCors(req, res, {
-        // Options
-        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-        origin: 'https://scrapper-next.herokuapp.com',
-        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    });
+
         const result = await axios.get(req.body.url,{
             headers:{
                 "Access-Control-Allow-Origin": "https://scrapper-next.herokuapp.com" ,
@@ -50,7 +43,7 @@ export default async function handler(req,res) {
                 })
                 console.log(list)
                 return list
-            }).catch(err => console.log(err));
-        res.json(result)
+            }).catch(err => res.status(500).end(err.message));
+        res.status(200).json(result)
 }
 
