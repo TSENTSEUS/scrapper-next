@@ -7,11 +7,7 @@ const axios = require('axios')
 
 export default async function handler(req,res) {
 
-        const result = await axios.get(req.body.url,{
-            headers:{
-                "Access-Control-Allow-Origin": "https://scrapper-next.herokuapp.com" ,
-            }
-        })
+        const result = await axios.get(req.body.url)
             .then(res => {
                 const img = []
                 const about = []
@@ -44,6 +40,7 @@ export default async function handler(req,res) {
                 console.log(list)
                 return list
             }).catch(err => res.status(500).end(err.message));
+        res.setHeader("Access-Control-Allow-Origin","*")
         res.status(200).json(result)
 }
 
