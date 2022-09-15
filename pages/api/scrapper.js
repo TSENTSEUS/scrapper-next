@@ -14,7 +14,6 @@ export default async function handler(req,res) {
         origin: '*',
         optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     });
-    try {
         const result = await axios.get(req.body.url,{
             headers:{
                 "Access-Control-Allow-Origin": "https://scrapper-next.herokuapp.com" ,
@@ -53,8 +52,5 @@ export default async function handler(req,res) {
                 return list
             }).catch(err => console.log(err));
         res.json(result)
-    }catch (e){
-        console.log(e)
-    }
 }
 
