@@ -62,7 +62,7 @@ async function handler(req,res) {
                 console.log(list)
                 return list
             }).catch(err => console.log(err));
-         res.setHeader('Access-Control-Allow-Methods','*')
+
          res.json(result)
 }
 export default handler

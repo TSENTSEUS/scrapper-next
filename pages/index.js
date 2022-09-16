@@ -77,7 +77,11 @@ export default function Home() {
             data:{
                 url,
             },
-        })
+            headers:{
+              "Allow-Control-Allow-Origin":"https://scrapper-next.herokuapp.com",
+              "Allow-Control-Allow-Methods":"PUT,GET,HEAD,POST,DELETE,OPTIONS"
+            },
+        },)
         setData(response.data)
         console.log('Data List: ', response)
     }
