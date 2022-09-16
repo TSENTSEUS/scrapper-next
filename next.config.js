@@ -6,14 +6,6 @@ const nextConfig = {
     domains: ['53.img.avito.st'],
     formats: ['image/avif', 'image/webp']
   },
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'https://scrapper-next.herokuapp.com'
-      }
-    ]
-  }
 }
 
 module.exports = nextConfig
