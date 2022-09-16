@@ -77,9 +77,6 @@ export default function Home() {
             data:{
                 url,
             },
-            headers:{
-                "Access-Control-Allow-Origin": "*",
-            }
         })
         setData(response.data)
         console.log('Data List: ', response)
