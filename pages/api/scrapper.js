@@ -1,11 +1,27 @@
 const cheerio = require('cheerio');
 const axios = require('axios')
+import Cors from 'cors'
+const cors = Cors({
+    methods: ['GET','POST','OPTIONS', 'HEAD'],
+})
+function runMiddleware(req, res, fn) {
+    return new Promise((resolve, reject) => {
+        fn(req, res, (result) => {
+            if (result instanceof Error) {
+                return reject(result)
+            }
+
+            return resolve(result)
+        })
+    })
+}
+
 /**
  * @param {import('next').NextApiRequest} req
  * @param {import('next').NextApiResponse} res
  */
-export default async function handler(req,res) {
-
+async function handler(req,res) {
+    await runMiddleware(req, res, cors)
     const result = await axios({
             method:"get",
             url:req.body.url,
@@ -41,7 +57,7 @@ export default async function handler(req,res) {
                 console.log(list)
                 return list
             }).catch(err => console.log(err));
-         res.setHeader('Access-Control-Allow-Origin',"*")
          res.json(result)
 }
+export default handler
 
