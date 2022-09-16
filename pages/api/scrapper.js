@@ -62,7 +62,7 @@ async function handler(req,res) {
                 console.log(list)
                 return list
             }).catch(err => console.log(err));
-         res.setHeader('GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE',"OPTIONS")
+         res.setHeader('Allow-Control-Allow-Methods', "OPTIONS")
          res.json(result)
 }
 export default handler
