@@ -4,30 +4,7 @@ const axios = require('axios')
  * @param {import('next').NextApiRequest} req
  * @param {import('next').NextApiResponse} res
  */
-
-import Cors from 'cors'
-
-function initMiddleware(middleware) {
-    return (req, res) =>
-        new Promise((resolve, reject) => {
-            middleware(req, res, (result) => {
-                if (result instanceof Error) {
-                    return reject(result)
-                }
-                return resolve(result)
-            })
-        })
-}
-const cors = initMiddleware(
-    // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-    Cors({
-        // Only allow requests with GET, POST and OPTIONS
-        methods: ['OPTIONS'],
-    })
-);
-
 export default async function handler(req,res) {
-    await cors(req, res)
 
     const result = await axios({
             method:"get",
