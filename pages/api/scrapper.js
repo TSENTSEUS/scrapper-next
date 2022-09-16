@@ -1,9 +1,12 @@
 const cheerio = require('cheerio');
 const axios = require('axios')
-import Cors from 'cors'
-const cors = Cors({
-    methods: ['GET','POST','OPTIONS', 'HEAD'],
-})
+/**
+ * @param {import('next').NextApiRequest} req
+ * @param {import('next').NextApiResponse} res
+ */
+
+import NextCors from 'nextjs-cors';
+
 function runMiddleware(req, res, fn) {
     return new Promise((resolve, reject) => {
         fn(req, res, (result) => {
@@ -16,12 +19,14 @@ function runMiddleware(req, res, fn) {
     })
 }
 
-/**
- * @param {import('next').NextApiRequest} req
- * @param {import('next').NextApiResponse} res
- */
+
 async function handler(req,res) {
-    await runMiddleware(req, res, cors)
+    await NextCors(req, res, {
+        // Options
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        origin: '*',
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    });
     const result = await axios({
             method:"get",
             url:req.body.url,
@@ -57,6 +62,7 @@ async function handler(req,res) {
                 console.log(list)
                 return list
             }).catch(err => console.log(err));
+         res.setHeader('Access-Control-Allow-Methods','*')
          res.json(result)
 }
 export default handler
