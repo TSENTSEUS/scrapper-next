@@ -73,7 +73,7 @@ export default function Home() {
         e.preventDefault()
         const response = await axios({
             method:"post",
-            url:'https://scrapper-next.herokuapp.com/api/scrapper',
+            url:'/api/scrapper',
             data:{
                 url,
             },
